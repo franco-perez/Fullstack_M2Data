@@ -1,0 +1,13 @@
+{
+  "name": "m2-data-programming-assignment",
+  "version": "1.0.0",
+  "description": "Assignment",
+  "scripts": {
+    "start": "node node_modules/http-server/bin/http-server -p 8765"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
