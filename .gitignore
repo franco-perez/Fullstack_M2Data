@@ -5,3 +5,6 @@
 **/Task description.pdf
 **/api/__pycache__/views.cpython-39.pyc
 **/backend/__pycache__/settings.cpython-39.pyc
+**/backend/api/__pycache__/*.pyc     
+**/backend/api/migrations/**
+**/backend/db3.sqlite3
