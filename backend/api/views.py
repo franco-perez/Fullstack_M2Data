@@ -2,10 +2,17 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.db import connection
 
+#call database
+import sqlite3
+
+
 import json
 
 def send_json(request):
-        
+
+    #get values from db
+    #logica correspndiente a la API
+
     data = [{'name': 'Peter', 'email': 'peter@example.org'},
             {'name': 'Julia', 'email': 'julia@example.org'}]
 
@@ -14,7 +21,7 @@ def send_json(request):
 
 def addmessage(request):
     # formato json 
-    # ingresar a la base de datos
+    # ingresar a la base de da
     return JsonResponse({},status=200)
 
 def getmessages(request):

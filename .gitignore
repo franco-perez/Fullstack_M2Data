@@ -1,1 +1,8 @@
-frontend\node_modules
+**/frontend/node_modules
+notas_franco.md
+**/backend/virtualenv
+
+**/Images_Documentation/
+**/Task description.pdf
+**/api/__pycache__/views.cpython-39.pyc
+**/backend/__pycache__/settings.cpython-39.pyc

@@ -1,10 +1,11 @@
 from django.db import models
 
+# tablas de DB y modelos de mi API
 # Create your models here.
 class Users_db(models.Model):
-    user_id = models.CharField(max_length=30) # constrain leng ht user to 30 charachter 
-    user_name = models.CharField(max_length=30)
+    user_id = models.AutoField(primary_key=True) # primary key, if not django creates it anyway
+    user_name = models.CharField(max_length=50)
     user_message= models.CharField(max_length=140)
 
-class Meta:
-    db_table="messages" 
+#class Meta:
+#    db_table="messages"  
