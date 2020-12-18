@@ -34,7 +34,7 @@ Encapsula todas las librrerias necesrarias para la aplicacion. Permite trabajr c
 6. activate venv ->  source backend/Scripts/activate
 
 
-# Quickdirty Start for Django
+## Quickdirty Start for Django
 
 create virtualenv for repetibility
 
@@ -60,7 +60,7 @@ pip install django
 pip install -r  requeriments.txt
 ```
 
-# Create Django Project:wq
+## Create Django Project:wq
 
 django-admin startproject mysite
 
@@ -87,3 +87,23 @@ These files are:
 - mysite/urls.py: The URL declarations for this Django project; a “table of contents” of your Django-powered site. You can read more about URLs in URL dispatcher.
 - mysite/asgi.py: An entry-point for ASGI-compatible web servers to serve your project. See How to deploy with ASGI for more details.
 - mysite/wsgi.py: An entry-point for WSGI-compatible web servers to serve your project. See How to deploy with WSGI for more details.
+
+
+## run makemigrations Django
+in backend folder
+ ```
+python manage.py makemigrations
+```
+
+> db3 will be created
+> add name of application ('api') to list of INSTALLED_APPS in seeting.py
+
+in migration should appear sthing like "0001_initial.py"
+
+## make migration (translate into SQL)
+
+
+```python
+python manage.py migrate
+```
+after this you should see in your db the created keys (name,message)
