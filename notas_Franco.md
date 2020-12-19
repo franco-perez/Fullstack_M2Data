@@ -1,4 +1,6 @@
-# Insert values into db SQlite3
+# Backend notes
+
+## Insert values into db SQlite3
 
 for inserting the values directly in the db
 
@@ -18,21 +20,18 @@ python manage.py runserver
 
 ```
 
-[imagen](..\Images_Documentation\Django_Framework.PNG)
+## virtual environment creation
 
-
-## virtual environment
-
-Encapsula todas las librrerias necesrarias para la aplicacion. Permite trabajr con dif. entronos virtuales
+- contains all files and libraries needed for good working of the app.
+- allows to work with differents programs version (on computer:python3 on environment: python2)
 
 1. open bash-terminal
-1. go to folder backend
-2. pip install virtualenv (it does not matter where you run this command)
-3. create a folder called virtualenv for leaving all environments variables and packages
-4. cd to virtualenv folder
-5.  create venv-> python -m venv backend
-6. activate venv ->  source backend/Scripts/activate
-
+2. go to folder backend
+3. pip install virtualenv (it does not matter where you run this command)
+4. create a folder called virtualenv for leaving all environments variables and packages
+5. cd to virtualenv folder
+6. create venv-> python -m venv backend
+7. activate venv ->  source backend/Scripts/activate
 
 ## Quickdirty Start for Django
 
@@ -50,7 +49,7 @@ source venvironment/Script/activate
 pip freeze
 ```
 
-install Django
+## install Django
 
 ```bash
 pip install django
@@ -62,11 +61,68 @@ pip install -r  requeriments.txt
 
 ## Create Django Project:wq
 
-django-admin startproject mysite
+```bash
+#cmd or bash
 
-Structure of a project
+#run virtual environment 
+follow ##virtual environment creation
+
+#name of project "backend"
+django-admin startproject backend
+
+#go to created project folder
+cd backend
+
+# name of your aplication
+manage.py startapp API
 
 ```
+
+go to backend-> settings.py and add your aplication (Api) like shown
+
+```bash
+Installed_APP = [
+    ...
+    ...
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'api',        
+]
+```
+
+## in file Urls.py
+
+add aplication path (path from api) to urlpatterns
+
+```bash
+#add
+from django.urls import include
+
+urlpatterns = [
+    ...
+    ...
+    #add this line
+    path('api/', include('api.urls')),
+]
+```
+
+## data structures on models.py
+
+all information needed to configurate db (can change db going to setting.py and selecting another db, standard is sqlite3)
+
+models are defined as classes
+
+```bash
+class messages(models.Model):
+    #user_id = models.AutoField(primary_key=True) # primary key, if not django creates it anyway
+    user_name = models.CharField(max_length=100, primary_key=True)
+    user_message= models.CharField(max_length=140)
+```
+
+### Structure of a project
+
+```bash
 mysite/
     manage.py
     mysite/
@@ -88,22 +144,22 @@ These files are:
 - mysite/asgi.py: An entry-point for ASGI-compatible web servers to serve your project. See How to deploy with ASGI for more details.
 - mysite/wsgi.py: An entry-point for WSGI-compatible web servers to serve your project. See How to deploy with WSGI for more details.
 
-
 ## run makemigrations Django
-in backend folder
- ```
+
+in backend folder in command cmd
+
+ ```cmd
 python manage.py makemigrations
 ```
 
-> db3 will be created
-> add name of application ('api') to list of INSTALLED_APPS in seeting.py
+db3 will be created
 
 in migration should appear sthing like "0001_initial.py"
 
 ## make migration (translate into SQL)
 
-
 ```python
 python manage.py migrate
 ```
+
 after this you should see in your db the created keys (name,message)
