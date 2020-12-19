@@ -2,19 +2,23 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.db import connection
 
+#from django.views import View
+from .models import messages
+
 #call database
 import sqlite3
 
-
 import json
 
-def send_json(request):
+#class MessagesView(View):
 
+def send_json(request):
+    
     #get values from db
     #logica correspndiente a la API
 
     data = [{'name': 'Peter', 'email': 'peter@example.org'},
-            {'name': 'Julia', 'email': 'julia@example.org'}]
+                {'name': 'Julia', 'email': 'julia@example.org'}]
 
     return JsonResponse(data, safe=False)
 
@@ -26,11 +30,19 @@ def addmessage(request):
 
 def getmessages(request):
     # espera evento Javascript
+
+
     # get list of db 
-    # send it to javascript in JSonformat
+    mlist = messages.objects.all()    
     
-    result = {}
-    return JsonResponse(result,status=200)
+    #transform Jquery into a list
+    result = list(mlist.values())
+    
+    #transform list into json
+    #result = json.dumps(result)
+    #  print(result)
+    #return JsonResponse(list,status=200)
+    return JsonResponse(result,safe=False)
 
 def cleardb(request):
     # DELETE

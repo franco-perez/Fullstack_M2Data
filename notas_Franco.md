@@ -9,7 +9,7 @@ INSERT INTO messages (name,message)
 VALUES('maria','Hi everyone');
 ```
 
-## how to start  service
+## how to start  django service
 
 ``` bash
 #go to folder where is manage.py .
@@ -35,6 +35,15 @@ python manage.py runserver
 
 ## Quickdirty Start for Django
 
+```bash
+# activate the virtual environment
+source virtualenv/backend/Scripts/activate
+
+#start the service
+python manage.py runserver  
+
+```
+
 create virtualenv for repetibility
 
 ```bash
@@ -43,7 +52,11 @@ pip install virtualenv
 python -m venv venvironment
 
 # activate the env
-source venvironment/Script/activate
+source virtualenv/backend/Scripts/activate
+
+#start the service
+python manage.py runserver  
+
 
 # see your new env
 pip freeze
@@ -64,8 +77,8 @@ pip install -r  requeriments.txt
 ```bash
 #cmd or bash
 
-#run virtual environment 
-follow ##virtual environment creation
+#run created virtual environment 
+source virtualenv/backend/Scripts/activate
 
 #name of project "backend"
 django-admin startproject backend
@@ -152,14 +165,47 @@ in backend folder in command cmd
 python manage.py makemigrations
 ```
 
+or
+
+```bash
+py manage.py makemigrations
+```
+
 db3 will be created
 
 in migration should appear sthing like "0001_initial.py"
 
 ## make migration (translate into SQL)
 
-```python
-python manage.py migrate
+```bash
+py manage.py migrate
+
+# create a superuser
+py manage.py createsuperuser
+
+
+#start the service
+py manage.py runserver  
 ```
 
 after this you should see in your db the created keys (name,message)
+
+## API testing with insomnia core
+
+``` bash
+download insomnia core from https://insomnia.rest/products/core/
+
+after installing and opening go to 
+
+ctrl+n
+
+```
+
+## Git commands
+
+problems with -gitignore? then..
+
+```bash
+# after git add .
+git rm --cached name_of_file
+```

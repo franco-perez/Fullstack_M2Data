@@ -8,3 +8,8 @@
 **/backend/api/__pycache__/*.pyc     
 **/backend/api/migrations/**
 **/backend/db3.sqlite3
+**/backend/api/__pycache__/**
+**/backend/api/__pycache__/urls.cpython-39.pyc
+**/backend/__pycache__/**
+backend/api/__pycache__/urls.cpython-39.pyc
+backend/backend/__pycache__/urls.cpython-39.pyc
