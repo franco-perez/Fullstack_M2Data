@@ -23,9 +23,15 @@ def send_json(request):
     return JsonResponse(data, safe=False)
 
 
-def addmessage(request):
+
+def addmessage(post, myObj):
     # formato json 
-    # ingresar a la base de da
+    name_JS=(myObj['name'])
+    message_JS=(myObj['message'])
+
+    #user_name_instansce= messages.user_name.objects.creates(name=name_JS)
+   # user_message_instansce=messages.user_message.objects.creates(message=message_JS)
+
     return JsonResponse({},status=200)
 
 def getmessages(request):
