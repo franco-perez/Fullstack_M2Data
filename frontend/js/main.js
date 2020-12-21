@@ -6,8 +6,8 @@ function sendJson(){
         }
     
     // API URL from Django-service (Backend)
-    const Url='http://127.0.0.1:8000/api/addmessage/'
-    
+    const Url='http://127.0.0.1:8000/api/addmessage/';
+
     
     //transform JS Object into JSON 
     var data = JSON.stringify(myObj);
@@ -19,7 +19,7 @@ function sendJson(){
     }
  });
     // POST REQUEST sent to Django API
-     $.post(Url,data,function(data,status){
+    return $.post(Url,data,function(data,status){
          console.log(`${data} and status is ${status}`)
      });
 }
@@ -113,8 +113,9 @@ function clearFields(){
 }
 
 
-function JsonHtml(){
+function btn(){
 
-
+    sendJson().then(displayMessages);
+    clearFields();
 
 }
