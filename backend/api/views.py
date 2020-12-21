@@ -11,9 +11,12 @@ import json
 
 
 def addmessage(request):
-        
+
     # Json object from Nodejs
-    #print(request)
+   # print(request)
+   # print(request.body)
+    #print(request.head)
+    #rint(request.auth)
     myObj = json.loads(request.body)
 
     newName=(myObj['name'])

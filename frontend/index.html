@@ -1,42 +1,63 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Assignment</title>
-  </head>
 
-  <body>
-    <h1>Chat</h1>
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title> 
+      Franco Perez | Chat Assignment 
+    </title> 
+    <script src="js/main.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head> 
+  
+  <body style="text-align:center;" id="body"> 
+    <h1 style="color:darkblue;"> 
+      Chat Application Assignment 
+    </h1> 
+  
+    <p>
+        <form id="FormAddMsg"></form>
+        <!-- Making a text input -->
+        <input type="text" id="name" placeholder="Your name"> 
+        <input type="text" id="message" placeholder="Your message"> 
+          
+        <!-- Button to send data -->
+        <button id= "btn" onclick="sendJson();displayMessages();clearFields();">Send</button> 
+        <!--button id= "btn">Send</button--> 
+        </form>
+  
+      <!-- For printing result from server -->
+    <h2>Messages</h2>
+      <p class="result" style="color:darkblue"></p> 
+      <button2 id= "btn2" onclick="displayMessages();">Send</button> 
+   </p> 
 
-    <form method="POST" action="http://127.0.0.1:8000/api/addmessages/">
-      <input type="text" id="name" value=""> <br>
-      <input type="text" id="message" value=""> <br>
-      <input type="submit" id="btn" value="Send">
-    </form>
+   <p id="output"></p>
+  
+  <!-- Include the JavaScript files -->
+  <script>
 
-    <form method="GET" action="http://127.0.0.1:8000/api/getmessages/">
-      <output type="json" id="name" value="Your name"> <br>
-      <input type="submit" value="send">
-    </form>
+  //once the website is loaded, do this
+  window.addEventListener('load', function () {
+    
+    alert("It's loaded!")
+  })
+  //document.addEventListener('DOMContentLoaded', ()=>{
+    
+    
+    //Send btn functionality
+    //document.getElementById('btn').addEventListener('click',sendJson);
+    //document.getElementById('btn').addEventListener('click',displayMessages);
+    
+    //clear the form
+  //  document.getElementById('name').value()='';
+  //  document.getElementById('message').value()='';
+  //});
 
-    <script>
-      const CreateJsonObject = (ev)=>{
-      ev.preventDefault(); //to stop the form submitting  
-      
-      let myObj ={
-        name:document.getElementById('name').value,
-        message:document.getElementById('message').value
-        }
-        //clear the form
-        documents.queryselector('form').reset();
-
-      }
-    document.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('btn').addEventListener('click',CreateJsonObject);
-    });
+  
 
 
-    </script>
-
-  </body>
-</html>
+  </script>
+  
+ 
+  </body> 
+</html> 

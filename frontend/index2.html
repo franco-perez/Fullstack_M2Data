@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Chat</h1>
+
+    <form id="Form_addmessage" method="GET" action="http://127.0.0.1:8000/api/addmessage/" >
+      <input type="text" id="name" value=""> <br>
+      <input type="text" id="message" value=""> <br>
+      <input type="submit" id="btn" value="Send">
+    </form>
+
+    <form id="Form_getmessage" method="GET" action="http://127.0.0.1:8000/api/getmessages/">
+      <output type="json" id="name" value="Your name"> <br>
+      
+    </form>
+
+    <script>
+      const CreateJsonObject = (ev)=>{
+      //ev.preventDefault(); //to stop the form submitting  
+      
+      let myObj ={
+        name:document.getElementById('name').value,
+        message:document.getElementById('message').value
+        }
+        //clear the form
+        document.getElementById('Form_addmessage').reset();
+      }
+
+    //method="GET" action="http://127.0.0.1:8000/api/addmessage/"
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('btn').addEventListener('click',CreateJsonObject);
+    });
+
+
+    </script>
+
+  </body>
+</html>
