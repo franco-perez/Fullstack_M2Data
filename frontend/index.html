@@ -7,6 +7,20 @@
     </title> 
     <script src="js/main.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      table 
+      {
+          width: 100%;
+          font: 17px Calibri;
+      }
+      table, th, td 
+      {
+          border: solid 1px #DDD;
+          border-collapse: collapse;
+          padding: 2px 3px;
+          text-align: center;
+      }
+    </style>
   </head> 
   
   <body style="text-align:center;" id="body"> 
@@ -27,20 +41,19 @@
       <!-- For printing result from server -->
     <h2>Messages</h2>
       <p class="result" style="color:darkblue"></p> 
-      <button2 id= "btn2" onclick="displayMessages();">Showmessages</button> 
+      <p id="showData"></p>
+      <!--button2 id= "showData" onclick="displayMessages();">Showmessages</button--> 
    </p> 
    
+
+   <!--div id="showData"></div-->
    <!--print variable output from javascript-->
-   <p id="output"></p>
-  
+   <!--p id="output"></p-->
   <!-- Include the JavaScript files -->
   <script>
 
-  //once the website is loaded, do this
-  window.addEventListener('load', function () {
-    
-    console.log("webpage is loaded! add Messages list")
-  })
+  //once the website is loaded, call function discplayMessages
+  window.addEventListener('load', displayMessages())
   //document.addEventListener('DOMContentLoaded', ()=>{
     
     

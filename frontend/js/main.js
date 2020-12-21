@@ -1,36 +1,27 @@
 function sendJson(){
+    //inserted values to be sent to the db
     var myObj ={
         name:document.getElementById('name').value,
         message:document.getElementById('message').value
         }
-    console.log('myObj was created')
-    console.log(myObj)
     
+    // API URL from Django-service (Backend)
     const Url='http://127.0.0.1:8000/api/addmessage/'
     
-    //newName=(myObj['name'])
-    //newMessage=(myObj['message'])
-   
+    
+    //transform JS Object into JSON 
     var data = JSON.stringify(myObj);
-   // console.log(data)
+
+   // Configuration of POST
    $.ajaxSetup({
     headers:{
        'Content-Type': "application/json"
     }
  });
-
+    // POST REQUEST sent to Django API
      $.post(Url,data,function(data,status){
          console.log(`${data} and status is ${status}`)
      });
-    
-    // $.post(Url,data,displayMessage());
-
-//    $.ajax("http://127.0.0.1:8000/api/addmessages/", {
-//        data: JSON.stringify({name: "Bullwinkle J. Moose", 
-//                                       email: "bullwinkle@example.com"} ),
-//        method: "POST",
-//        contentType: "application/json"
-//     });
 }
 
 function displayMessages(){
@@ -38,31 +29,81 @@ function displayMessages(){
     const Url='http://127.0.0.1:8000/api/getmessages/';
     
     //Get only Json elements
-    $.getJSON(Url,function(myObj){
+    $.getJSON(Url,function(data){
+
+        //console.log("the data is = "+data)
+        // transform JS into JSON string
+        var data = JSON.stringify(data);
+        //console.log("the type of data is = "+typeof(data))
+        //console.log("the data string is = "+data)
+
+        //Transform JSonstring into JSON object
+        data=JSON.parse(data)
+        //console.log(typeof(data))
+        //console.log(data)
+
+        var arrItems = [];      // Array to store JSON items
+        $.each(data, function (name, message) {
+            arrItems.push(message);       // PUSH THE VALUES INSIDE THE ARRAY.
+        });
+        console.log(arrItems)
+        //var data = JSON.stringify(myObj);
+        
+
+        // EXTRACT VALUE FOR TABLE HEADER.
+        var col = [];
+        for (var i = 0; i < arrItems.length; i++) {
+            for (var key in arrItems[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);                    
+                }
+            }
+        }
+        
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 1; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < arrItems.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 1; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = arrItems[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+        
+        //console.log(typeof(data))
+        //console.log("the length is " + data.length);
+
+        
+        //for(var i=0; i<)
         // for que cada linea myobj  /<br>
 
         //por cada uno:
         //imprimir contenido de esa linea
         //añadir un texto <br>
-        //fin por cada uno
-
-       // for elem in myObj:
-
-
-       // var name="karen";
-       // document.getElementById("output").innerHTML=name;
-        console.log(myObj);
-        console.log(typeof(myObj));
-        console.log(myObj[0].user_name);
-        console.log(myObj[0].user_message);
-        
+        //fin por cada un
         
         
     });    
-
-    //var name="karen";
-    //document.getElementById("output").innerHTML=name;
-    //alert("work on display messages ")
 }
 
 function clearFields(){
@@ -72,3 +113,8 @@ function clearFields(){
 }
 
 
+function JsonHtml(){
+
+
+
+}
