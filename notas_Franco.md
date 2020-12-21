@@ -210,7 +210,6 @@ problems with -gitignore? then..
 git rm --cached name_of_file
 ```
 
-
 ## frontend
 
 nodejs -> scalable, JS interpreter and environment, manages big amount of user petitions

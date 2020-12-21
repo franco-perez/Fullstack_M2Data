@@ -1,57 +1,68 @@
-function sendJSON_or(){ 
-               
-    let result = document.querySelector('.result'); 
-    let name = document.querySelector('#name'); 
-    console.log(name)
-    let message = document.querySelector('#message'); 
-       
-    // Creating a XHR object 
-    let xhr = new XMLHttpRequest(); 
-    let url = "submit.php"; 
-
-    // open a connection 
-    xhr.open("POST", url, true); 
-
-    // Set the request header i.e. which type of content you are sending 
-    xhr.setRequestHeader("Content-Type", "application/json"); 
-
-    // Create a state change callback 
-    xhr.onreadystatechange = function () { 
-        if (xhr.readyState === 4 && xhr.status === 200) { 
-
-            // Print received data from server 
-            result.innerHTML = this.responseText; 
-
-        } 
-    }; 
-
-    // Converting JSON data to string 
-    var data = JSON.stringify({ "name": name.value, "email": email.value }); 
-
-    // Sending data with the request 
-    xhr.send(data); 
-} 
-
 function sendJson(){
-    let myObj ={
+    var myObj ={
         name:document.getElementById('name').value,
         message:document.getElementById('message').value
         }
-    alert('myObj was created')
+    console.log('myObj was created')
     console.log(myObj)
+    
+    const Url='http://127.0.0.1:8000/api/addmessage/'
+    
+    //newName=(myObj['name'])
+    //newMessage=(myObj['message'])
+   
+    var data = JSON.stringify(myObj);
+   // console.log(data)
+   $.ajaxSetup({
+    headers:{
+       'Content-Type': "application/json"
+    }
+ });
+
+     $.post(Url,data,function(data,status){
+         console.log(`${data} and status is ${status}`)
+     });
+    
+    // $.post(Url,data,displayMessage());
+
+//    $.ajax("http://127.0.0.1:8000/api/addmessages/", {
+//        data: JSON.stringify({name: "Bullwinkle J. Moose", 
+//                                       email: "bullwinkle@example.com"} ),
+//        method: "POST",
+//        contentType: "application/json"
+//     });
 }
 
 function displayMessages(){
-    //display messages
+    //URL from API
     const Url='http://127.0.0.1:8000/api/getmessages/';
     
-    $.getJSON(Url,function(result){
+    //Get only Json elements
+    $.getJSON(Url,function(myObj){
+        // for que cada linea myobj  /<br>
+
+        //por cada uno:
+        //imprimir contenido de esa linea
+        //añadir un texto <br>
+        //fin por cada uno
+
+       // for elem in myObj:
+
+
+       // var name="karen";
+       // document.getElementById("output").innerHTML=name;
         console.log(myObj);
+        console.log(typeof(myObj));
+        console.log(myObj[0].user_name);
+        console.log(myObj[0].user_message);
+        
+        
+        
     });    
 
-    var name="karen";
-    document.getElementById("output").innerHTML=name;
-    alert("work on display messages ")
+    //var name="karen";
+    //document.getElementById("output").innerHTML=name;
+    //alert("work on display messages ")
 }
 
 function clearFields(){

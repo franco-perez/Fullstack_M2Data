@@ -22,15 +22,15 @@
           
         <!-- Button to send data -->
         <button id= "btn" onclick="sendJson();displayMessages();clearFields();">Send</button> 
-        <!--button id= "btn">Send</button--> 
         </form>
   
       <!-- For printing result from server -->
     <h2>Messages</h2>
       <p class="result" style="color:darkblue"></p> 
-      <button2 id= "btn2" onclick="displayMessages();">Send</button> 
+      <button2 id= "btn2" onclick="displayMessages();">Showmessages</button> 
    </p> 
-
+   
+   <!--print variable output from javascript-->
    <p id="output"></p>
   
   <!-- Include the JavaScript files -->
@@ -39,7 +39,7 @@
   //once the website is loaded, do this
   window.addEventListener('load', function () {
     
-    alert("It's loaded!")
+    console.log("webpage is loaded! add Messages list")
   })
   //document.addEventListener('DOMContentLoaded', ()=>{
     
