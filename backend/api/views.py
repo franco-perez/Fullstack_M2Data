@@ -11,24 +11,18 @@ import json
 
 
 def addmessage(request):
-    # formato json 
-    
-
-    print("  ->")
-    print(request.body)
-    #wait myObj
+        
     # Json object from Nodejs
+    #print(request)
     myObj = json.loads(request.body)
 
     newName=(myObj['name'])
     newMessage=(myObj['message'])
 
     #newName = request.GET['name']
-    #print(request)
-    
-
     newMessage = messages(user_name=newName, user_message=newMessage)
-    newMessage.save();
+    newMessage.save()
+
     return JsonResponse({},status=200)
 
 def getmessages(request):

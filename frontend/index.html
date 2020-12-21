@@ -6,12 +6,37 @@
   </head>
 
   <body>
-    <h1>Hello world!</h1>
+    <h1>Chat</h1>
 
-    <form method="POST" action="http://127.0.0.1:8000/api/addmesssage/">
-      <input type="text" id="name" value="Your name"> <br>
-      <input type="text" id="message" value="Your message"> <br>
+    <form method="POST" action="http://127.0.0.1:8000/api/addmessages/">
+      <input type="text" id="name" value=""> <br>
+      <input type="text" id="message" value=""> <br>
+      <input type="submit" id="btn" value="Send">
+    </form>
+
+    <form method="GET" action="http://127.0.0.1:8000/api/getmessages/">
+      <output type="json" id="name" value="Your name"> <br>
       <input type="submit" value="send">
     </form>
+
+    <script>
+      const CreateJsonObject = (ev)=>{
+      ev.preventDefault(); //to stop the form submitting  
+      
+      let myObj ={
+        name:document.getElementById('name').value,
+        message:document.getElementById('message').value
+        }
+        //clear the form
+        documents.queryselector('form').reset();
+
+      }
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('btn').addEventListener('click',CreateJsonObject);
+    });
+
+
+    </script>
+
   </body>
 </html>
