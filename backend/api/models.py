@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 class messages(models.Model):
     # user_id = models.AutoField(primary_key=True) # primary key, if not django creates it anyway
-    user_name = models.CharField(max_length=100)
-    user_message= models.CharField(max_length=140)
+    name = models.CharField(max_length=100)
+    message= models.CharField(max_length=140)
 
 #class Meta:
 #    db_table="messages"  

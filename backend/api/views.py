@@ -19,7 +19,7 @@ def addmessage(request):
     newName=(myObj['name'])
     newMessage=(myObj['message'])
 
-    newMessage = messages(user_name=newName, user_message=newMessage)
+    newMessage = messages(name=newName, message=newMessage)
     newMessage.save()
 
     return JsonResponse({},status=200)

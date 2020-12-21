@@ -129,8 +129,8 @@ models are defined as classes
 ```bash
 class messages(models.Model):
     #user_id = models.AutoField(primary_key=True) # primary key, if not django creates it anyway
-    user_name = models.CharField(max_length=100, primary_key=True)
-    user_message= models.CharField(max_length=140)
+    name = models.CharField(max_length=100, primary_key=True)
+    message= models.CharField(max_length=140)
 ```
 
 ### Structure of a project
@@ -213,3 +213,5 @@ git rm --cached name_of_file
 ## frontend
 
 nodejs -> scalable, JS interpreter and environment, manages big amount of user petitions
+
+
