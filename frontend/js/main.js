@@ -21,6 +21,7 @@ function sendJson(){
     // POST REQUEST sent to Django API
     return $.post(Url,data,function(data,status){
          console.log(`${data} and status is ${status}`)
+    
      });
 }
 
@@ -31,24 +32,17 @@ function displayMessages(){
     //Get only Json elements
     $.getJSON(Url,function(data){
 
-        //console.log("the data is = "+data)
         // transform JS into JSON string
         var data = JSON.stringify(data);
-        //console.log("the type of data is = "+typeof(data))
-        //console.log("the data string is = "+data)
-
+    
         //Transform JSonstring into JSON object
         data=JSON.parse(data)
-        //console.log(typeof(data))
-        //console.log(data)
-
-        var arrItems = [];      // Array to store JSON items
+      
+        // Array to store JSON items
+        var arrItems = [];      
         $.each(data, function (name, message) {
             arrItems.push(message);       // PUSH THE VALUES INSIDE THE ARRAY.
-        });
-        console.log(arrItems)
-        //var data = JSON.stringify(myObj);
-        
+        });    
 
         // EXTRACT VALUE FOR TABLE HEADER.
         var col = [];
@@ -65,10 +59,10 @@ function displayMessages(){
 
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
-        var tr = table.insertRow(-1);                   // TABLE ROW.
+        var tr = table.insertRow(-1);                   // Table Row.
 
         for (var i = 1; i < col.length; i++) {
-            var th = document.createElement("th");      // TABLE HEADER.
+            var th = document.createElement("th");      // Table HEADER.
             th.innerHTML = col[i];
             tr.appendChild(th);
         }
@@ -89,33 +83,29 @@ function displayMessages(){
         var divContainer = document.getElementById("showData");
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
-        
-        //console.log(typeof(data))
-        //console.log("the length is " + data.length);
-
-        
-        //for(var i=0; i<)
-        // for que cada linea myobj  /<br>
-
-        //por cada uno:
-        //imprimir contenido de esa linea
-        //añadir un texto <br>
-        //fin por cada un
-        
-        
+                
     });    
 }
 
 function clearFields(){
     document.getElementById('name').value='';
     document.getElementById('message').value='';
-    //document.getElementById('FormAddMsg').reset();
 }
 
 
 function btn(){
-
-    sendJson().then(displayMessages);
-    clearFields();
+    var A = document.getElementById('name').value.length
+    var B = document.getElementById('message').value.length
+    
+    if (A == 0 || B ==0)
+      { 
+         alert("You cannot send an empty field");
+         clearFields();  	
+         return false; 
+      } else{  
+      sendJson().then(displayMessages);
+      clearFields();	
+      return true; 
+    };  
 
 }
